@@ -14,7 +14,7 @@ class Config(object):
     BOT_OWNER = int(os.environ.get("BOT_OWNER", 2072962525))
     MONGODB_URI = os.environ.get("MONGODB_URI", "")
     START_TEXT = """
-Xin chào, tôi là Bot Footer Broadcast!
+Xin chào, tôi là Bot!
 
 Tôi có thể thêm chân trang vào Tin nhắn Phương tiện Kênh. Chỉ cần thêm tôi vào kênh với tư cách là Quản trị viên với tất cả các quyền và thiết lập /settings !!
 """
