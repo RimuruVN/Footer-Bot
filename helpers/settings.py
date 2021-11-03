@@ -9,10 +9,10 @@ from helpers.database.access_db import db
 
 async def ShowSettings(event: Message, user_id: int):
     """
-    Show Custom Settings Panel with Updated Data.
+    Hiển thị bảng cài đặt tùy chỉnh với dữ liệu cập nhật.
 
-    :param event: Pass Editable Message object.
-    :param user_id: Pass User ID to Get Data of that User.
+    :param event: Chuyển đối tượng Tin nhắn có thể chỉnh sửa.
+    :param user_id: Chuyển User ID để lấy dữ liệu của người dùng đó.
     """
 
     service_on = await db.get_service_on(user_id)
@@ -22,22 +22,22 @@ async def ShowSettings(event: Message, user_id: int):
     also_footer2photo = await db.get_add_photo_footer(user_id)
     channel_id = await db.get_channel_id(user_id)
     markup = [
-        [InlineKeyboardButton(f"Service is {'ON' if (service_on is True) else 'OFF'} ✅", callback_data="triggerService")],
-        [InlineKeyboardButton("Set Footer Text", callback_data="setFooterText")],
-        [InlineKeyboardButton(f"Also Apply Footer to Photo {'ON' if (also_footer2text is True) else 'OFF'} ✅", callback_data="setAlsoFooter2Text")],
-        [InlineKeyboardButton(f"Also Apply Footer to Text {'ON' if (also_footer2photo is True) else 'OFF'} ✅", callback_data="setAlsoFooter2Photo")]
+        [InlineKeyboardButton(f"Bot đang {'BẬT' if (service_on is True) else 'TẮT'} ✅", callback_data="triggerService")],
+        [InlineKeyboardButton("Đặt văn bản chân trang", callback_data="setFooterText")],
+        [InlineKeyboardButton(f"Cũng áp dụng chân trang cho ảnh - {'BẬT' if (also_footer2text is True) else 'TẮT'} ✅", callback_data="setAlsoFooter2Text")],
+        [InlineKeyboardButton(f"Cũng áp dụng chân trang cho văn bản - {'BẬT' if (also_footer2photo is True) else 'TẮT'} ✅", callback_data="setAlsoFooter2Photo")]
     ]
     # Bug <<<
     if footer_ is not None:
-        markup.append([InlineKeyboardButton("Remove Footer Text", callback_data="rmFooterText"),
-                       InlineKeyboardButton("Show Footer Text", callback_data="showFooterText")])
+        markup.append([InlineKeyboardButton("Xóa văn bản chân trang", callback_data="rmFooterText"),
+                       InlineKeyboardButton("Hiển thị Văn bản Chân trang", callback_data="showFooterText")])
     if channel_id is None:
-        markup.append([InlineKeyboardButton("Set Channel ID", callback_data="setChannelID")])
+        markup.append([InlineKeyboardButton("Đặt ID kênh", callback_data="setChannelID")])
     else:
-        markup.append([InlineKeyboardButton("Change Channel ID", callback_data="setChannelID")])
+        markup.append([InlineKeyboardButton("Thay đổi ID kênh", callback_data="setChannelID")])
     try:
         await event.edit(
-            text="Here You Can Set Your Settings:",
+            text="Tại đây Bạn có thể đặt cài đặt của mình:",
             reply_markup=InlineKeyboardMarkup(markup)
         )
     except FloodWait as e:
