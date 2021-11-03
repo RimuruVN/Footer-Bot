@@ -26,11 +26,11 @@ async def send_msg(user_id, message):
         await asyncio.sleep(e.x)
         return send_msg(user_id, message)
     except InputUserDeactivated:
-        return 400, f"{user_id} : deactivated\n"
+        return 400, f"{user_id} : hủy kích hoạt\n"
     except UserIsBlocked:
-        return 400, f"{user_id} : blocked the bot\n"
+        return 400, f"{user_id} : chặn bot\n"
     except PeerIdInvalid:
-        return 400, f"{user_id} : user id invalid\n"
+        return 400, f"{user_id} : id người dùng không hợp lệ\n"
     except Exception as e:
         return 500, f"{user_id} : {traceback.format_exc()}\n"
 
@@ -43,7 +43,7 @@ async def broadcast_handler(m: Message):
         if not broadcast_ids.get(broadcast_id):
             break
     out = await m.reply_text(
-        text=f"Broadcast Started! You will be notified with log file when all the users are notified."
+        text=f"Đã bắt đầu phát sóng! Bạn sẽ được thông báo với tệp nhật ký khi tất cả người dùng được thông báo."
     )
     start_time = time.time()
     total_users = await db.total_users_count()
@@ -88,13 +88,13 @@ async def broadcast_handler(m: Message):
     await out.delete()
     if failed == 0:
         await m.reply_text(
-            text=f"broadcast completed in `{completed_in}`\n\nTotal users {total_users}.\nTotal done {done}, {success} success and {failed} failed.",
+            text=f"Phát sóng hoàn thành trong`{completed_in}`\n\nTổng số người dùng {total_users}.\nTổng số người dùng {done}, {success} thành công và {failed} thất bại.",
             quote=True
         )
     else:
         await m.reply_document(
             document='broadcast.txt',
-            caption=f"broadcast completed in `{completed_in}`\n\nTotal users {total_users}.\nTotal done {done}, {success} success and {failed} failed.",
+            caption=f"Phát sóng hoàn thành trong`{completed_in}`\n\nTổng số người dùng {total_users}.\nTổng số người dùng {done}, {success} thành công và {failed} thất bại.",
             quote=True
         )
     await aiofiles.os.remove('broadcast.txt')
