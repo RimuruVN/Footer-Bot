@@ -16,7 +16,7 @@ async def FetchMeOnChat(bot: Client, chat_id: int):
         if e.x > 60:
             await NotifyUser(
                 bot,
-                text=f"Bot Got FloodWait of {str(e.x)}s from Your Chat: {str(chat_id)}\n\nSo Now Service Disabled!\nYou can again enable service from /settings !!",
+                text=f"Bot bị lỗi FloodWait {str(e.x)} từ Trò chuyện của bạn: {str(chat_id)}\n\nVì vậy, dịch vụ hiện đã bị vô hiệu hóa!\nBạn có thể kích hoạt lại dịch vụ từ /settings !!",
                 user_id=(await db.find_user_id(chat_id))
             )
         FetchData, err = await FetchMeOnChat(bot, chat_id)
