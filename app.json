@@ -14,33 +14,42 @@
     "success_url": "https://t.me/Footer_Bot",
     "env": {
         "API_ID": {
-            "description": "Get this value from my.telegram.org or @TeleORG_Bot"
+            "description": "Get this value from my.telegram.org or @TeleORG_Bot",
+            "value": "4231409"
         },
         "API_HASH": {
-            "description": "Get this value from my.telegram.org or @TeleORG_Bot"
+            "description": "Get this value from my.telegram.org or @TeleORG_Bot",
+            "value": "c1828f4f9181fb4d9b6deb95e5f05862"
         },
         "BOT_TOKEN": {
-            "description": "Get this from @BotFather"
+            "description": "Get this from @BotFather",
+            "value": "2062865068:AAHSqtpIKR8wY2YcvuB6qB5u9dnfld4LX8I"
         },
         "MONGODB_URI": {
-            "description": "MongoDB URI for Saving Chat Settings. Video Tutorial Here: https://www.youtube.com/watch?v=aXlF80Cn7iU"
+            "description": "MongoDB URI for Saving Chat Settings. Video Tutorial Here: https://www.youtube.com/watch?v=aXlF80Cn7iU",
+            "value": "mongodb+srv://1:1@cluster0.en6c5.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
         },
         "BOT_OWNER": {
-            "description": "Your Telegram User ID for using Admin commands."
+            "description": "Your Telegram User ID for using Admin commands.",
+            "value": "mongodb+srv://1:1@cluster0.en6c5.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
         },
         "SESSION_NAME": {
             "description": "A Bot Session Name without Space.",
+            "value": "Bot",
             "required": false
         },
         "LOG_CHANNEL": {
-            "description": "A Telegram Logs Channel ID for some trace."
+            "description": "A Telegram Logs Channel ID for some trace.",
+            "value": "-1001538077496"
         },
         "BROADCAST_AS_COPY": {
             "description": "Broadcast with forward tag or not. Value can be True/False.",
+            "value": "False",
             "required": false
         },
         "UPDATES_CHANNEL": {
             "description": "Username or Chanenl ID of Updates Channel to do Force Sub.",
+            "value": "-1001242919620",
             "required": false
         }
     },
