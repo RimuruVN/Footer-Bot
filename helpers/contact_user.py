@@ -11,7 +11,7 @@ from configs import Config
 
 async def NotifyUser(bot: Client, text: str, user_id: int):
     """
-    A Custom Send Message to User Function. Send a Message to User via user_id.
+    Một chức năng gửi tin nhắn tùy chỉnh đến người dùng. Gửi tin nhắn cho người dùng qua user_id.
 
     :param bot: Pass Bot Client.
     :param text: Text Message to Send to User.
@@ -32,5 +32,5 @@ async def NotifyUser(bot: Client, text: str, user_id: int):
     except Exception as e:
         await bot.send_message(
             chat_id=Config.LOG_CHANNEL,
-            text=f"#USER_CONTACT_ERROR:\nUnable to Send Message to {str(user_id)} !\nError: {e}"
+            text=f"#USER_CONTACT_ERROR:\nKhông thể gửi tin nhắn tới {str(user_id)} !\nError: {e}"
         )
